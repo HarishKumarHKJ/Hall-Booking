@@ -1,0 +1,347 @@
+{
+    "info": {
+      "_postman_id": "c478e5fb-ddf0-47ea-b073-172ab05a05b3",
+      "name": "Hall Booking",
+      "description": "API creation for Hall booking Application by using Node.js-Express.js",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "_exporter_id": "27751148"
+    },
+    "item": [
+      {
+        "name": "Get all room details",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3001/room",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3001",
+            "path": ["room"]
+          },
+          "description": "Get and view all room datas"
+        },
+        "response": [
+          {
+            "room_id": 1,
+            "room_name": "Meeting Room",
+            "seats_available": 50,
+            "amenities_available": ["Projector", "LED-Tv", "Sound-bar"],
+            "price_per_hour": 50,
+            "booked_status": true
+          },
+          {
+            "room_id": 2,
+            "room_name": "Small function Room",
+            "seats_available": 100,
+            "amenities_available": ["Projector", "LED-Tv", "Sound-bar"],
+            "price_per_hour": 100,
+            "booked_status": false
+          },
+          {
+            "room_id": 3,
+            "room_name": "Large function Room",
+            "seats_available": 200,
+            "amenities_available": ["Projector", "LED-Tv", "Sound-bar"],
+            "price_per_hour": 200,
+            "booked_status": false
+          }
+        ]
+      },
+      {
+        "name": "Booking - room",
+        "request": {
+          "method": "POST",
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n\"customer_name\":\"Suresh\",\r\n\"date\":\"2023-07-12\",\r\n\"start_time\":\"14:00\",\r\n\"end_time\":\"16:00\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "url": {
+            "raw": "http://localhost:3001/bookroom/3",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3001",
+            "path": ["bookroom", "3"]
+          },
+          "description": "Booking room by using room id"
+        },
+        "response": [
+          {
+            "message": "Room booked successfully"
+          }
+        ]
+      },
+      {
+        "name": "Booked-room",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3001/bookedroom",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3001",
+            "path": ["bookedroom"]
+          },
+          "description": "Get all details of booked rooms"
+        },
+        "response": [
+          {
+            "booked_status": "Booked",
+            "room_name": "Meeting Room",
+            "customer_name": "Boobathi",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 1
+          },
+          {
+            "booked_status": "Booked",
+            "room_name": "Large function Room",
+            "customer_name": "Suresh",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 3
+          }
+        ]
+      },
+      {
+        "name": "List all customer with booked data",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3001/customers",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3001",
+            "path": ["customers"]
+          },
+          "description": "Check a single customer booking"
+        },
+        "response": [
+          {
+            "customer_name": "Boobathi",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 1,
+            "room_name": "Meeting Room",
+            "booking_status": "Booked"
+          },
+          {
+            "customer_name": "Suresh",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 3,
+            "room_name": "Large function Room",
+            "booking_status": "Booked"
+          }
+        ]
+      },
+      {
+        "name": "Single Customer booking check",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3001/customer/boobathi",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3001",
+            "path": ["customer", "boobathi"]
+          },
+          "description": "checking single customer booking history"
+        },
+        "response": [
+          {
+            "customer_name": "Boobathi",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 1,
+            "room_name": "Meeting Room",
+            "booking_status": "Booked"
+          }
+        ]
+      },
+      {
+        "name": "Get all room-render",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "https://hall-booking-api-808m.onrender.com/room",
+            "protocol": "https",
+            "host": ["hall-booking-api-808m", "onrender", "com"],
+            "path": ["room"]
+          },
+          "description": "After render deployment , Check and get all room details"
+        },
+        "response": [
+          {
+            "room_id": 1,
+            "room_name": "Meeting Room",
+            "seats_available": 50,
+            "amenities_available": ["Projector", "LED-Tv", "Sound-bar"],
+            "price_per_hour": 50,
+            "booked_status": true
+          },
+          {
+            "room_id": 2,
+            "room_name": "Small function Room",
+            "seats_available": 100,
+            "amenities_available": ["Projector", "LED-Tv", "Sound-bar"],
+            "price_per_hour": 100,
+            "booked_status": false
+          },
+          {
+            "room_id": 3,
+            "room_name": "Large function Room",
+            "seats_available": 200,
+            "amenities_available": ["Projector", "LED-Tv", "Sound-bar"],
+            "price_per_hour": 200,
+            "booked_status": false
+          }
+        ]
+      },
+      {
+        "name": "Booking room-render",
+        "request": {
+          "method": "POST",
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"customer_name\": \"Boobathi\",\r\n    \"date\": \"2023-07-14\",\r\n    \"start_time\": \"14:00\",\r\n    \"end_time\": \"16:00\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          },
+          "url": {
+            "raw": "https://hall-booking-api-808m.onrender.com/bookroom/2",
+            "protocol": "https",
+            "host": ["hall-booking-api-808m", "onrender", "com"],
+            "path": ["bookroom", "2"]
+          },
+          "description": "After render deployment, Booking room with customer and booking details"
+        },
+        "response": [
+          {
+            "message": "Room booked successfully"
+          }
+        ]
+      },
+      {
+        "name": "Get Booked Room-render",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "https://hall-booking-api-808m.onrender.com/bookedroom",
+            "protocol": "https",
+            "host": ["hall-booking-api-808m", "onrender", "com"],
+            "path": ["bookedroom"]
+          },
+          "description": "After render deployment, get all customers with booked rooms"
+        },
+        "response": [
+          {
+            "booked_status": "Booked",
+            "room_name": "Meeting Room",
+            "customer_name": "Boobathi",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 1
+          },
+          {
+            "booked_status": "Booked",
+            "room_name": "Small function Room",
+            "customer_name": "Boobathi",
+            "date": "2023-07-14",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 2
+          }
+        ]
+      },
+      {
+        "name": "Customer booked -render",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "https://hall-booking-api-808m.onrender.com/customers",
+            "protocol": "https",
+            "host": ["hall-booking-api-808m", "onrender", "com"],
+            "path": ["customers"]
+          },
+          "description": "After render deployment, Listing all customers with booking details"
+        },
+        "response": [
+          {
+            "customer_name": "Boobathi",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 1,
+            "room_name": "Meeting Room",
+            "booking_status": "Booked"
+          },
+          {
+            "customer_name": "Boobathi",
+            "date": "2023-07-14",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 2,
+            "room_name": "Small function Room",
+            "booking_status": "Booked"
+          }
+        ]
+      },
+      {
+        "name": "customer booking check-render",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "https://hall-booking-api-808m.onrender.com/customer/boobathi",
+            "protocol": "https",
+            "host": ["hall-booking-api-808m", "onrender", "com"],
+            "path": ["customer", "boobathi"]
+          },
+          "description": "After render deployment, checking single customer booking history"
+        },
+        "response": [
+          {
+            "customer_name": "Boobathi",
+            "date": "2023-07-12",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 1,
+            "room_name": "Meeting Room",
+            "booking_status": "Booked"
+          },
+          {
+            "customer_name": "Boobathi",
+            "date": "2023-07-14",
+            "start_time": "14:00",
+            "end_time": "16:00",
+            "room_id": 2,
+            "room_name": "Small function Room",
+            "booking_status": "Booked"
+          }
+        ]
+      }
+    ]
+  }
